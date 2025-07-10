@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - DevDishes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff8f0;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #ff6600;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+        }
+        .recipe {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .add-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+        .add-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h2>Welcome to DevDishes, {{ session['user'] }}!</h2>
+    </div>
+    <div class="container">
+        <a class="add-button" href="/add">+ Add New Recipe</a>
+
+        {% if recipes %}
+            {% for recipe in recipes %}
+                <div class="recipe">
+                    <h3>{{ recipe[0] }}</h3>
+                    <p>{{ recipe[1] }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No recipes yet. Be the first to add one!</p>
+        {% endif %}
+    </div>
+</body>
+</html>
