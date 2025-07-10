@@ -41,6 +41,16 @@ jobs:
           git commit -m "ci: bump version to ${{ steps.version.outputs.new_version }}"
           git push
 
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm install
+
+      - name: Run frontend unit tests
+        run: |
+          cd frontend
+          npm test
+
       - name: Build and push frontend Docker image
         uses: docker/build-push-action@v5
         with:
